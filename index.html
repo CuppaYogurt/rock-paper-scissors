@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let humanChoice;
+        let computerChoice;
+        // 0 = rock
+        // 1 = paper
+        // 2 = scissor
+
+        //Computer Choice logic
+        function getComputerChoice() {
+
+            computerChoice = ( Math.floor(Math.random() * 3) );
+
+            return computerChoice; 
+        };
+
+        //console.log(getComputerChoice());
+
+        //human input choice logic
+        function getHumanChoice() {
+
+            let humanChoiceString = window.prompt("What is your choice?");
+
+            let humanChoiceStringLower = humanChoiceString.toLowerCase(); //forces input to lower case
+
+            humanChoiceStringLower == "rock" ? humanChoice = 0
+                : humanChoiceStringLower == "paper" ? humanChoice = 1
+                : humanChoiceStringLower == "scissor" ? humanChoice = 2
+                : humanChoiceLower = "Not a valid choice"
+
+            return humanChoice;
+
+        };
+
+        //console.log(getUserChoice());
+
+        function playGame(){
+
+            let humanScore = 0;
+            let computerScore = 0;
+
+            function playRound( humanChoice, computerChoice ){
+                
+                const computerSelection = getComputerChoice();
+                const humanSelection = getHumanChoice();
+
+                let humanChoiceString;
+                let computerChoiceString;
+
+                if( humanSelection == 0 ) {                    //converts human number to string for alert below
+                    humanChoiceString = "Rock"
+                } else if( humanSelection == 1){
+                    humanChoiceString = "Paper"
+                } else if( humanSelection ==2){
+                    humanChoiceString = "Scissor"
+                }
+
+                if( computerSelection == 0 ) {                 //converts computer number to string for alert below
+                    computerChoiceString = "Rock"
+                } else if( computerSelection == 1){
+                    computerChoiceString = "Paper"
+                } else if( computerSelection ==2){
+                    computerChoiceString = "Scissor"
+                }
+
+                if( humanSelection > computerSelection ){       //runs the game while announcing who won and selection
+                    console.log( "You win! " + humanChoiceString + " beats " + computerChoiceString + ".")
+                    humanScore++;
+                }
+                else if ( computerSelection > humanSelection){
+                    console.log( "You lose! " + computerChoiceString + " beats " + humanChoiceString + ".")
+                    computerScore++;
+                }
+                else if ( computerSelection == humanSelection){
+                    console.log ( "Draw! " + humanChoiceString + " was chosen by both.")
+                }
+
+
+            }
+            
+            for ( i= 0 ; i < 5 ; i++ ){
+                playRound();
+                console.log(humanScore);
+                console.log(computerScore);
+            }
+
+        }
+    
+        console.log(playGame());
+
+        //Create scoring tally
+
+        //create loop that finishes when a score reaches 5
+         //Display who won
+
+    </script>
+</body>
+</html>
